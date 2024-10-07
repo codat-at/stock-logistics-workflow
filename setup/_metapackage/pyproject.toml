@@ -1,19 +1,28 @@
 [project]
 name = "odoo-addons-oca-stock-logistics-workflow"
-version = "17.0.20240805.0"
+version = "17.0.20240930.1"
 dependencies = [
     "odoo-addon-delivery_procurement_group_carrier>=17.0dev,<17.1dev",
+    "odoo-addon-purchase_stock_picking_invoice_link>=17.0dev,<17.1dev",
     "odoo-addon-sale_order_global_stock_route>=17.0dev,<17.1dev",
+    "odoo-addon-stock_account_product_run_fifo_hook>=17.0dev,<17.1dev",
+    "odoo-addon-stock_account_show_automatic_valuation>=17.0dev,<17.1dev",
     "odoo-addon-stock_move_line_reference_link>=17.0dev,<17.1dev",
     "odoo-addon-stock_no_negative>=17.0dev,<17.1dev",
     "odoo-addon-stock_picking_auto_create_lot>=17.0dev,<17.1dev",
+    "odoo-addon-stock_picking_back2draft>=17.0dev,<17.1dev",
     "odoo-addon-stock_picking_filter_lot>=17.0dev,<17.1dev",
     "odoo-addon-stock_picking_invoice_link>=17.0dev,<17.1dev",
+    "odoo-addon-stock_picking_kind>=17.0dev,<17.1dev",
+    "odoo-addon-stock_picking_origin_reference>=17.0dev,<17.1dev",
     "odoo-addon-stock_picking_purchase_order_link>=17.0dev,<17.1dev",
     "odoo-addon-stock_picking_sale_order_link>=17.0dev,<17.1dev",
     "odoo-addon-stock_picking_show_backorder>=17.0dev,<17.1dev",
     "odoo-addon-stock_picking_show_return>=17.0dev,<17.1dev",
+    "odoo-addon-stock_picking_warn_message>=17.0dev,<17.1dev",
+    "odoo-addon-stock_restrict_lot>=17.0dev,<17.1dev",
     "odoo-addon-stock_split_picking>=17.0dev,<17.1dev",
+    "odoo-addon-stock_valuation_layer_usage>=17.0dev,<17.1dev",
 ]
 classifiers=[
     "Programming Language :: Python",
