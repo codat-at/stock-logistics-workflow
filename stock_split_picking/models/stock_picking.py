@@ -53,6 +53,8 @@ class StockPicking(models.Model):
                     if float_compare(quantity, 0, precision_rounding=rounding) == 0:
                         moves2remove |= move
 
+            backorder_picking = None
+
             # If we have new moves to move, create the backorder picking
             if new_moves:
                 backorder_picking = picking._create_split_backorder()
@@ -67,6 +69,8 @@ class StockPicking(models.Model):
                     # first cancel the move and then delete it.
                     move2remove._action_cancel()
                     move2remove.unlink()
+
+            return backorder_picking
 
     def _create_split_backorder(self, default=None):
         """Copy current picking with defaults passed, post message about
