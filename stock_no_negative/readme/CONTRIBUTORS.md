@@ -18,3 +18,9 @@
 
 - [OERP Canada](https://www.oerp.ca/):
   - Foram Darji \<<fd@oerp.ca>\>
+
+- [Dynapps](https://www.dynapps.eu/):
+  - Bert Van Groenendael \<<bert.vangroenendael@dynapps.eu>\>
+
+- [Heliconia Solutions Pvt. Ltd.](https://www.heliconia.io)
+  - Bhavesh Heliconia

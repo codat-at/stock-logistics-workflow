@@ -4,7 +4,7 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server 17.0\n"
+"Project-Id-Version: Odoo Server 19.0\n"
 "Report-Msgid-Bugs-To: \n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -24,6 +24,24 @@ msgid "Delivery"
 msgstr ""
 
 #. module: stock_picking_invoice_link
+#: model:ir.model.fields,field_description:stock_picking_invoice_link.field_account_move__display_name
+#: model:ir.model.fields,field_description:stock_picking_invoice_link.field_account_move_line__display_name
+#: model:ir.model.fields,field_description:stock_picking_invoice_link.field_account_move_reversal__display_name
+#: model:ir.model.fields,field_description:stock_picking_invoice_link.field_stock_move__display_name
+#: model:ir.model.fields,field_description:stock_picking_invoice_link.field_stock_picking__display_name
+msgid "Display Name"
+msgstr ""
+
+#. module: stock_picking_invoice_link
+#: model:ir.model.fields,field_description:stock_picking_invoice_link.field_account_move__id
+#: model:ir.model.fields,field_description:stock_picking_invoice_link.field_account_move_line__id
+#: model:ir.model.fields,field_description:stock_picking_invoice_link.field_account_move_reversal__id
+#: model:ir.model.fields,field_description:stock_picking_invoice_link.field_stock_move__id
+#: model:ir.model.fields,field_description:stock_picking_invoice_link.field_stock_picking__id
+msgid "ID"
+msgstr ""
+
+#. module: stock_picking_invoice_link
 #: model_terms:ir.ui.view,arch_db:stock_picking_invoice_link.view_picking_form
 msgid "Invoice"
 msgstr ""
@@ -35,7 +53,6 @@ msgstr ""
 
 #. module: stock_picking_invoice_link
 #: model_terms:ir.ui.view,arch_db:stock_picking_invoice_link.view_move_form
-#: model_terms:ir.ui.view,arch_db:stock_picking_invoice_link.view_move_picking_form
 msgid "Invoice Lines"
 msgstr ""
 
@@ -62,14 +79,12 @@ msgstr ""
 #. module: stock_picking_invoice_link
 #: model:ir.model.fields,field_description:stock_picking_invoice_link.field_account_bank_statement_line__picking_count
 #: model:ir.model.fields,field_description:stock_picking_invoice_link.field_account_move__picking_count
-#: model:ir.model.fields,field_description:stock_picking_invoice_link.field_account_payment__picking_count
 msgid "Pickings count"
 msgstr ""
 
 #. module: stock_picking_invoice_link
 #: model:ir.model.fields,field_description:stock_picking_invoice_link.field_account_bank_statement_line__picking_ids
 #: model:ir.model.fields,field_description:stock_picking_invoice_link.field_account_move__picking_ids
-#: model:ir.model.fields,field_description:stock_picking_invoice_link.field_account_payment__picking_ids
 msgid "Related Pickings"
 msgstr ""
 
@@ -81,7 +96,6 @@ msgstr ""
 #. module: stock_picking_invoice_link
 #: model:ir.model.fields,help:stock_picking_invoice_link.field_account_bank_statement_line__picking_ids
 #: model:ir.model.fields,help:stock_picking_invoice_link.field_account_move__picking_ids
-#: model:ir.model.fields,help:stock_picking_invoice_link.field_account_payment__picking_ids
 msgid ""
 "Related pickings (only when the invoice has been generated from a sale "
 "order)."
@@ -92,11 +106,6 @@ msgstr ""
 msgid ""
 "Related stock moves (only when the invoice has been generated from a sale "
 "order)."
-msgstr ""
-
-#. module: stock_picking_invoice_link
-#: model:ir.model,name:stock_picking_invoice_link.model_sale_order_line
-msgid "Sales Order Line"
 msgstr ""
 
 #. module: stock_picking_invoice_link
@@ -112,6 +121,5 @@ msgstr ""
 #. module: stock_picking_invoice_link
 #. odoo-python
 #: code:addons/stock_picking_invoice_link/models/stock_move.py:0
-#, python-format
 msgid "You can not modify an invoiced stock move"
 msgstr ""
