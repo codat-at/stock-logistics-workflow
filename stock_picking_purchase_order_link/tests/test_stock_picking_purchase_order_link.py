@@ -1,45 +1,43 @@
 # Copyright 2019 ForgeFlow S.L.
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
-
 from datetime import date
 
+from odoo.fields import Command
 from odoo.tests.common import TransactionCase
 
 
 class TestStockPickingPurchaseOrderLink(TransactionCase):
-    def setUp(self):
-        super().setUp()
-        self.stock_location_obj = self.env["stock.location"]
-        self.stock_picking_type_obj = self.env["stock.picking.type"]
-        self.stock_picking_obj = self.env["stock.picking"]
-        self.product_product_obj = self.env["product.product"]
-        self.warehouse = self.env["stock.warehouse"].create(
+    @classmethod
+    def setUpClass(cls):
+        super().setUpClass()
+        cls.stock_location_obj = cls.env["stock.location"]
+        cls.stock_picking_type_obj = cls.env["stock.picking.type"]
+        cls.stock_picking_obj = cls.env["stock.picking"]
+        cls.product_product_obj = cls.env["product.product"]
+        cls.warehouse = cls.env["stock.warehouse"].create(
             {"name": "warehouse - test", "code": "WH-TEST"}
         )
-
-        self.product = self.product_product_obj.create(
+        cls.product = cls.product_product_obj.create(
             {
                 "name": "product_template_obj - Test",
-                "type": "product",
+                "type": "consu",
                 "standard_price": 100.00,
             }
         )
-        self.partner = self.env["res.partner"].create({"name": "Vendor - test"})
-        self.picking_type = self.stock_picking_type_obj.search(
-            [("warehouse_id", "=", self.warehouse.id), ("code", "=", "incoming")]
+        cls.partner = cls.env["res.partner"].create({"name": "Vendor - test"})
+        cls.picking_type = cls.stock_picking_type_obj.search(
+            [("warehouse_id", "=", cls.warehouse.id), ("code", "=", "incoming")]
         )
-        purchase_order = self.env["purchase.order"].create(
+        purchase_order = cls.env["purchase.order"].create(
             {
-                "partner_id": self.partner.id,
+                "partner_id": cls.partner.id,
                 "order_line": [
-                    (
-                        0,
-                        0,
+                    Command.create(
                         {
-                            "name": self.product.name,
-                            "product_id": self.product.id,
+                            "name": cls.product.name,
+                            "product_id": cls.product.id,
                             "product_qty": 1.0,
-                            "product_uom": self.product.uom_po_id.id,
+                            "product_uom_id": cls.product.uom_id.id,
                             "price_unit": 10.0,
                             "date_planned": date.today(),
                         },
@@ -48,7 +46,7 @@ class TestStockPickingPurchaseOrderLink(TransactionCase):
             }
         )
         purchase_order.button_confirm()
-        self.picking = self.stock_picking_obj.search(
+        cls.picking = cls.stock_picking_obj.search(
             [("purchase_id", "=", purchase_order.id)]
         )
 

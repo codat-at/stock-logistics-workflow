@@ -20,7 +20,6 @@ class TestStockPickingSaleOrderLink(TransactionCase):
         self.product = self.Product.create(
             {
                 "name": "Product - Test",
-                "type": "product",
                 "list_price": 100.00,
                 "standard_price": 100.00,
             }
@@ -42,7 +41,7 @@ class TestStockPickingSaleOrderLink(TransactionCase):
                             "name": self.product.name,
                             "product_id": self.product.product_variant_ids.id,
                             "product_uom_qty": 2,
-                            "product_uom": self.product.uom_id.id,
+                            "product_uom_id": self.product.uom_id.id,
                             "price_unit": 100.00,
                         },
                     )

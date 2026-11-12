@@ -1,5 +1,6 @@
 # Copyright 2018 Tecnativa - Sergio Teruel
 # Copyright 2020 ACSONE SA/NV
+# Copyright 2025 Moduon Team
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
 
 
@@ -8,7 +9,7 @@ class CommonStockPickingAutoCreateLot:
         elements = []
         for element in element_list:
             if element in elements:
-                raise Exception("Element %s is not unique in list" % element)
+                raise Exception(f"Element {element} is not unique in list")
             elements.append(element)
 
     @classmethod
@@ -20,6 +21,9 @@ class CommonStockPickingAutoCreateLot:
         cls.picking_type_in = cls.env.ref("stock.picking_type_in")
         cls.supplier_location = cls.env.ref("stock.stock_location_suppliers")
         cls.supplier = cls.env["res.partner"].create({"name": "Supplier - test"})
+        cls.auto_lot_category = cls.env["product.category"].create(
+            {"name": "Test Auto Lot Category", "auto_create_lot": True}
+        )
 
     @classmethod
     def _create_product(cls, tracking="lot", auto=True):
@@ -27,9 +31,10 @@ class CommonStockPickingAutoCreateLot:
         return cls.env["product.product"].create(
             {
                 "name": name,
-                "type": "product",
+                "type": "consu",
                 "tracking": tracking,
                 "auto_create_lot": auto,
+                "is_storable": True,
             }
         )
 
@@ -52,7 +57,6 @@ class CommonStockPickingAutoCreateLot:
         location_dest = cls.picking.picking_type_id.default_location_dest_id
         cls.move = cls.env["stock.move"].create(
             {
-                "name": f"test-{product.name}",
                 "product_id": product.id,
                 "picking_id": cls.picking.id,
                 "picking_type_id": cls.picking.picking_type_id.id,
